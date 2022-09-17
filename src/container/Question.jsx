@@ -8,7 +8,7 @@ import { updateCount } from '../firebase/title';
 const Question = ({ data, setAnswered }) => {
   const [selectedOption, setSelectOption] = useState([]);
   const userInfo = useRecoilValue(userInfoState);
-  const setLoginModalOpen = useSetRecoilState(loginModalOpenState);
+  // const setLoginModalOpen = useSetRecoilState(loginModalOpenState);
   const navigate = useNavigate();
 
   const moveLoginPage = () => {
@@ -22,14 +22,14 @@ const Question = ({ data, setAnswered }) => {
     }
   };
 
-  const openLoginModal = () => {
-    setLoginModalOpen(true);
-  };
+  // const openLoginModal = () => {
+  //   setLoginModalOpen(true);
+  // };
 
   const handleSelectOption = (id) => {
     if (!userInfo?.id) {
-      // moveLoginPage();
-      openLoginModal();
+      moveLoginPage();
+      // openLoginModal();
     }
 
     if (data.id === '10001') {
