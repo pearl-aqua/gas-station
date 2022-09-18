@@ -16,6 +16,11 @@ export const questionListState = selector({
   },
 });
 
+export const selectedOptionsId = atom({
+  key: 'selectedOptionsId',
+  default: [],
+});
+
 export const loginModalOpenState = atom({
   key: 'loginModalOpenState',
   default: false,

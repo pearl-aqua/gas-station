@@ -11,17 +11,18 @@ const Poll = ({ data }) => {
 
   const userInfo = useRecoilValue(userInfoState);
 
-  const { questionId = [] } = userInfo || {};
+  const { questionId = [], optionsId = [] } = userInfo || {};
 
   const isAnsweredUser = questionId.includes(data.id);
 
   return (
-    <div className="flex flex-col justify-center items-center w-[350px] md:w-96 py-10 mb-4 bg-white rounded-2xl border border-slate-200">
+    <div className="flex flex-col justify-center items-center w-[350px] md:w-96 py-10 mb-4 bg-white rounded-2xl border border-slate-200 z-50">
       {answered || isAnsweredUser ? (
         <Conclusion
           data={data}
           answered={answered}
           isAnsweredUser={isAnsweredUser}
+          optionsId={optionsId}
         />
       ) : (
         <Question setAnswered={setAnswered} data={data} />

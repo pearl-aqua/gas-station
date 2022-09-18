@@ -51,7 +51,7 @@ const Question = ({ data, setAnswered }) => {
 
   const getButtonStyle = (id) => {
     if (selectedOption.includes(id)) {
-      return 'bg-violet-200 font-medium';
+      return 'bg-violet-200 font-medium shadow-md';
     }
     return '';
   };
@@ -70,8 +70,8 @@ const Question = ({ data, setAnswered }) => {
   };
 
   return (
-    <div>
-      <div className="flex flex-col w-300p mb-2 text-left">
+    <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col w-312p mb-2 text-left">
         <div className="mb-2 text-lg text-stone-800 font-semibold">
           Q. {data?.text}
         </div>
@@ -81,7 +81,7 @@ const Question = ({ data, setAnswered }) => {
       {data?.options?.map(({ id, text }) => (
         <button
           key={id}
-          className={`flex items-center w-300p h-12 px-4 py-3 mb-2.5 text-violet-900 hover:shadow-md border border-violet-200 rounded-lg ${getButtonStyle(
+          className={`flex items-center w-312p h-10 px-4 py-3 mb-2.5 text-violet-900 hover:shadow-md border border-violet-200 rounded-lg ${getButtonStyle(
             id
           )}`}
           onClick={() => handleSelectOption(id)}
@@ -90,7 +90,7 @@ const Question = ({ data, setAnswered }) => {
         </button>
       ))}
       <button
-        className="flex items-center justify-center w-200p px-5 py-3 mt-6 rounded-2xl bg-violet-400 text-white hover:bg-violet-500 disabled:bg-neutral-400 self-end"
+        className="flex items-center justify-center w-160p px-5 py-3 mt-5 rounded-2xl bg-violet-400 text-white hover:bg-violet-500 disabled:bg-neutral-400"
         disabled={selectedOption.length === 0}
         onClick={handleClickButton}
       >
