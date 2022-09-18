@@ -45,11 +45,11 @@ const Intro = () => {
   return (
     <>
       {/* {loginModalOpen && <LoginModal />} */}
-      <div className="flex flex-col w-[350px] md:w-96 px-5 py-6 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
-        <span> - 기범이 생일을 맞아 재미삼아 만든 페이지입니다.</span>
-        <span> - 투표는 9/30까지 진행됩니다.</span>
+      <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
+        <span>- 기범이 생일을 맞아 재미삼아 만든 페이지입니다.</span>
+        <span className="mt-1"> - 투표는 9/30까지 진행됩니다.</span>
         {userInfo?.email && (
-          <span className="text-slate-600">
+          <span className="text-slate-600 mt-1">
             - 현재 {userInfo.email}로 로그인 되어 있습니다.
           </span>
         )}

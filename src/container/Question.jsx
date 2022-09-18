@@ -1,13 +1,20 @@
 import { useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
-import { userInfoState, loginModalOpenState } from '../recoil';
+import {
+  userInfoState,
+  selectedOptionsIdState,
+  // loginModalOpenState,
+} from '../recoil';
 import { updateCount } from '../firebase/title';
 
 const Question = ({ data, setAnswered }) => {
   const [selectedOption, setSelectOption] = useState([]);
   const userInfo = useRecoilValue(userInfoState);
+  const [selectedOptionsId, setSelectedOptionsId] = useRecoilState(
+    selectedOptionsIdState
+  );
   // const setLoginModalOpen = useSetRecoilState(loginModalOpenState);
   const navigate = useNavigate();
 
@@ -33,7 +40,12 @@ const Question = ({ data, setAnswered }) => {
     }
 
     if (data.id === '10001') {
-      if (selectedOption.length < 3) {
+      if (selectedOption.includes(id)) {
+        const filterOption = selectedOption.filter(
+          (optionId) => optionId !== id
+        );
+        setSelectOption(filterOption);
+      } else if (selectedOption.length < 3) {
         setSelectOption([...selectedOption, id]);
       } else {
         alert('3개 이상 선택하실 수 없습니다');
@@ -63,6 +75,7 @@ const Question = ({ data, setAnswered }) => {
         selectedIds: selectedOption,
         userId: userInfo.id,
       });
+      setSelectedOptionsId([...selectedOptionsId, ...selectedOption]);
       setAnswered(true);
     } else {
       moveLoginPage();

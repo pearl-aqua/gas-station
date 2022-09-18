@@ -16,8 +16,8 @@ export const questionListState = selector({
   },
 });
 
-export const selectedOptionsId = atom({
-  key: 'selectedOptionsId',
+export const selectedOptionsIdState = atom({
+  key: 'selectedOptionsIdState',
   default: [],
 });
 
