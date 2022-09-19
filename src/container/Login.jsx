@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,18 +8,28 @@ import { getUserInfo } from '../firebase/title';
 import google from '../img/google-logo.svg';
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const setUserInfo = useSetRecoilState(userInfoState);
   const navigate = useNavigate();
 
   const clickLogin = async () => {
     const { id, email } = await popupLogin();
+    if (id) {
+      setLoading(true);
+    }
     const userInfoResult = await getUserInfo({ id, email });
 
     setUserInfo(userInfoResult);
     navigate('/');
   };
 
-  return (
+  return loading ? (
+    <div className="flex justify-center items-center w-full h-[600px]">
+      <div className="animate-bounce text-2xl font-semibold text-violet-500">
+        Happy kibum Day!
+      </div>
+    </div>
+  ) : (
     <div className="flex flex-col justify-center items-center w-[350px] md:w-96 px-8 py-10 mt-28 mb-28 bg-white rounded-2xl border border-slate-200 text-left z-50">
       <div className="mb-6 text-slate-600">
         중복 투표를 방지하기 위해 구글 로그인을 사용하고 있습니다.
