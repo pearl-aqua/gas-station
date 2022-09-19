@@ -6,8 +6,8 @@ import {
   GoogleAuthProvider,
   getRedirectResult,
   signInWithPopup,
+  signOut,
 } from 'firebase/auth';
-import { getUserInfo } from './title';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -62,6 +62,16 @@ export const popupLogin = () =>
       window.localStorage.setItem('gas_id', user.uid);
 
       return { id: user.uid, email: user.email };
+    })
+    .catch((error) => {
+      alert(error);
+    });
+
+export const userLogout = () =>
+  signOut(auth)
+    .then(() => {
+      window.localStorage.removeItem('gas_id');
+      alert('로그아웃 처리 되었습니다');
     })
     .catch((error) => {
       alert(error);

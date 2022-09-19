@@ -46,7 +46,7 @@ const Intro = () => {
       {/* {loginModalOpen && <LoginModal />} */}
       <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
         <span>- 기범이 생일을 맞아 재미삼아 만든 페이지입니다.</span>
-        <span className="mt-1"> - 투표는 9/30까지 진행됩니다.</span>
+        <span className="mt-1"> - 투표는 9/20 ~ 9/27까지 진행됩니다.</span>
         <span className="mt-1"> - 결과 공유하기는 twitter만 가능합니다.</span>
         {userInfo?.email && (
           <span className="text-slate-500 mt-1">
