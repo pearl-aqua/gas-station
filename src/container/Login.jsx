@@ -13,10 +13,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const clickLogin = async () => {
+    setLoading(true);
     const { id, email } = await popupLogin();
-    if (id) {
-      setLoading(true);
-    }
     const userInfoResult = await getUserInfo({ id, email });
 
     setUserInfo(userInfoResult);
