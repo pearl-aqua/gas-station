@@ -33,9 +33,9 @@ function App() {
           <div className="font-light text-sm text-white">
             The reason I can breathe
           </div>
-          <div className="mt-2 font-light text-sm text-white">
+          {/* <div className="mt-2 font-light text-sm text-white">
             <Link to="/logout">logout</Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
