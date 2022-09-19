@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-96 px-8 py-10 mt-28 mb-28 bg-white rounded-2xl border border-slate-200 text-left z-50">
+    <div className="flex flex-col justify-center items-center w-[350px] md:w-96 px-8 py-10 mt-28 mb-28 bg-white rounded-2xl border border-slate-200 text-left z-50">
       <div className="mb-6 text-slate-600">
         중복 투표를 방지하기 위해 구글 로그인을 사용하고 있습니다.
         <div className="flex flex-col mt-5 text-sm text-slate-400">
@@ -33,8 +33,8 @@ const Login = () => {
           </span>
           <span className="mb-2">
             - 로그인 창에 뜨는 v6love-97397.firebaseapp.com 는 이 사이트의
-            데이터 저장을 위해 사용하는 주소이며 관리 권한은 이 사이트 관리자가
-            가지고 있습니다.
+            데이터 저장을 위해 사용하는 주소이며 이 사이트 관리자가 관리하고
+            있습니다.
           </span>
         </div>
       </div>

@@ -111,7 +111,7 @@ export const updateCount = async ({ questionId, selectedIds, userId }) => {
 export const getUserInfo = async ({ id, email }) => {
   const userRef = doc(store, 'g_user', id);
   const userInfo = await getDoc(userRef);
-  console.log(userInfo.data(), 'userInfo');
+
   if (userInfo.exists()) {
     return userInfo.data();
   } else {

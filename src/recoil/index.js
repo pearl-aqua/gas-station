@@ -11,7 +11,6 @@ export const questionListState = selector({
   key: 'questionListState',
   get: async ({ get }) => {
     const list = await getQuestionList();
-    console.log(list, 'lost');
     return list;
   },
 });

@@ -8,13 +8,13 @@ const pageUrl = 'gas-station-theta.vercel.app';
 
 const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
   const [newData, setNewData] = useState(null);
-  const [selectOption, setSelectOption] = useState(null);
+  const [selectOption, setSelectOption] = useState([]);
   const selectedOptionsId = useRecoilValue(selectedOptionsIdState);
 
   useEffect(() => {
     if (isAnsweredUser) {
       setNewData(data);
-      const selectedOption = data.options.find(({ id }) =>
+      const selectedOption = data.options.filter(({ id }) =>
         optionsId?.includes(id)
       );
       setSelectOption(selectedOption);
@@ -22,9 +22,11 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
       const questionResult = async () => {
         const result = await getQuestionResult(data.id);
         setNewData(result);
-        const selectedOption = result.options.find(({ id }) =>
+
+        const selectedOption = result.options.filter(({ id }) =>
           selectedOptionsId?.includes(id)
         );
+
         setSelectOption(selectedOption);
       };
       questionResult();
@@ -41,14 +43,22 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
     return `${widthNum}p`;
   };
 
-  const sendText = `🎂 김기범 생일 기념 질문 🎂
+  const sendText =
+    data.id !== '10001'
+      ? `🎂 김기범 생일 기념 질문 🎂
   Q.${newData?.text || data?.text}
-  - 당신의 선택 : ${selectOption?.text}
+  - 당신의 선택 : ${selectOption[0]?.text}
   - ${parseFloat(
-    ((selectOption?.count / newData?.count || 0) * 100).toFixed(2)
+    ((selectOption[0]?.count / newData?.count || 0) * 100).toFixed(2)
   )}%의 릴프릭이 같은 선택을 하였습니다.
   
   투표하기 및 결과보러가기 ->
+`
+      : `🎂 김기범 생일 기념 질문 🎂
+Q.${newData?.text || data?.text}
+- 당신의 선택 : ${selectOption?.map(({ text }) => text)}
+
+투표하기 및 결과보러가기 ->
 `;
 
   const clickShareButton = () => {
@@ -110,9 +120,6 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
           >
             결과 공유하기
           </button>
-          <div className="mt-1 text-sm text-slate-400">
-            * twitter만 가능합니다.
-          </div>
         </div>
       )}
     </div>

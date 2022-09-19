@@ -44,7 +44,7 @@ export const redirectResult = () => {
       // const token = credential.accessToken;
       const user = result.user;
       window.localStorage.setItem('gas_id', user.uid);
-      console.log({ id: user.uid, email: user.email }, 'redirect');
+
       return { id: user.uid, email: user.email };
     })
     .catch((error) => {
@@ -60,7 +60,7 @@ export const popupLogin = () =>
     .then((result) => {
       const user = result.user;
       window.localStorage.setItem('gas_id', user.uid);
-      console.log({ id: user.uid, email: user.email }, 'popup');
+
       return { id: user.uid, email: user.email };
     })
     .catch((error) => {
