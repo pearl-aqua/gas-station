@@ -30,9 +30,9 @@ function App() {
         </RecoilRoot>
         <div className="h-44 pt-20 bg-violet-500 -mt-12 rounded-t-4xl w-full md:w-[436px] z-10">
           <div className="font-bold text-2xl text-white">Happy Kibum Day!</div>
-          <div className="font-light text-sm text-white">
+          {/* <div className="font-light text-sm text-white">
             The reason I can breathe
-          </div>
+          </div> */}
           {/* <div className="mt-2 font-light text-sm text-white">
             <Link to="/logout">logout</Link>
           </div> */}
