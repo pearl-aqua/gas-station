@@ -84,29 +84,29 @@ Q.${newData?.text || data?.text}
         ? newData?.options?.map(({ id, text, count }) => (
             <div
               key={id}
-              className="relative flex flex-col item-start justify-center w-312p h-10 px-4 mb-2.5 text-slate-800 border border-violet-100 rounded-lg"
+              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-800 border border-violet-100 rounded-lg box-content"
             >
               <div className="flex justify-between w-full z-20">
                 <span className="">{text}</span>
-                <span className="text-sm text-slate-400">{`${parseFloat(
+                <span className="text-sm text-slate-400 mt-0.5">{`${parseFloat(
                   ((count / newData?.count || 0) * 100).toFixed(2)
                 )}%`}</span>
               </div>
               <div
                 className={`absolute top-0 left-0 w-${getOptionWidth(
                   count
-                )} h-10 bg-violet-200 rounded-lg z-100`}
+                )} h-[38px] bg-violet-200 rounded-[7px] z-100 border border-violet-200`}
               />
             </div>
           ))
         : data?.options?.map(({ id, text, count }) => (
             <div
               key={id}
-              className="relative flex flex-col item-start justify-center w-312p h-10 px-4 mb-2.5 text-slate-600 border border-violet-100 rounded-lg"
+              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-600 border border-violet-100 rounded-lg box-content"
             >
               <div className="flex justify-between w-full z-20">
                 <span>{text}</span>
-                <span className="text-sm">{`${Math.round(
+                <span className="text-sm mt-0.5">{`${Math.round(
                   (count / newData?.count || 0) * 100
                 )}%`}</span>
               </div>

@@ -94,7 +94,7 @@ const Question = ({ data, setAnswered }) => {
       {data?.options?.map(({ id, text }) => (
         <button
           key={id}
-          className={`flex items-center w-312p h-10 px-4 py-3 mb-2.5 text-violet-900 hover:shadow-md border border-violet-200 rounded-lg ${getButtonStyle(
+          className={`flex items-center w-312p h-10 px-4 py-3 mb-2 text-violet-900 hover:shadow-md border border-violet-200 rounded-lg ${getButtonStyle(
             id
           )}`}
           onClick={() => handleSelectOption(id)}
