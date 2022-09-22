@@ -26,6 +26,9 @@ module.exports = {
       borderRadius: {
         '4xl': '3rem',
       },
+      animation: {
+        'ping-once': 'ping 2s cubic-bezier(0, 0, 0.2, 1)',
+      },
     },
   },
   plugins: [],
