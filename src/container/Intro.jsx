@@ -44,9 +44,11 @@ const Intro = () => {
   return (
     <>
       {/* {loginModalOpen && <LoginModal />} */}
-      <div className="flex flex-col w-[350px] md:w-96 px-8 py-12 mb-2 bg-white rounded-2xl border border-slate-200 text-sm text-slate-600">
-        <div className="text-lg text-slate-600 mb-2">2022.9.23</div>
-        <div className="animate-ping-once text-2xl font-semibold text-violet-500 mb-4">
+      <div className="flex flex-col w-[350px] md:w-96 px-8 py-10 mb-2 bg-white rounded-2xl border border-slate-200 text-sm text-slate-600">
+        <div className="text-base font-medium text-violet-400 mb-2">
+          2022.9.23
+        </div>
+        <div className="animate-ping-once text-2xl font-bold text-violet-500 mb-4">
           김기범 탄신일을 축하합니다
         </div>
         <div className="mb-2">
