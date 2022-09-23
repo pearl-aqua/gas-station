@@ -22,7 +22,9 @@ const Intro = () => {
     const checkLogin = async () => {
       const userInfoResult = await getUserInfo({ id });
       setUserInfo(userInfoResult);
-      await updatePass({ userId: id, email: userInfoResult.email });
+      if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
+        await updatePass({ userId: id, email: userInfoResult.email });
+      }
     };
     // const checkLoginResult = async () => {
     //   const { id, email } = redirectResult();
