@@ -125,3 +125,12 @@ export const getUserInfo = async ({ id, email }) => {
     return userData;
   }
 };
+
+export const updatePass = async ({ userId, email }) => {
+  const data = {
+    email,
+    date: new Date(),
+  };
+
+  await setDoc(doc(store, 'pass', userId), data);
+};

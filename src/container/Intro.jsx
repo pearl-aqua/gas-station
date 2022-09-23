@@ -7,7 +7,7 @@ import {
   // loginModalOpenState,
 } from '../recoil';
 // import { redirectResult } from '../firebase/index';
-import { getUserInfo } from '../firebase/title';
+import { getUserInfo, updatePass } from '../firebase/title';
 // import LoginModal from './LoginModal';
 
 const Intro = () => {
@@ -22,6 +22,7 @@ const Intro = () => {
     const checkLogin = async () => {
       const userInfoResult = await getUserInfo({ id });
       setUserInfo(userInfoResult);
+      await updatePass({ userId: id, email: userInfoResult.email });
     };
     // const checkLoginResult = async () => {
     //   const { id, email } = redirectResult();
@@ -48,7 +49,7 @@ const Intro = () => {
         <div className="text-base font-medium text-violet-400 mb-2">
           2022.9.23
         </div>
-        <div className="animate-ping-once text-2xl font-bold text-violet-500 mb-4">
+        <div className="text-2xl font-bold text-violet-500 mb-4">
           김기범 탄신일을 축하합니다
         </div>
         <div className="mb-2">
