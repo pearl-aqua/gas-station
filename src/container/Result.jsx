@@ -87,12 +87,12 @@ const Result = () => {
                 />
               </div>
             ))}
-          </div>
-          <div
-            className="text-sm text-slate-400 self-end mr-10 mt-1 cursor-pointer"
-            onClick={() => clickShareButton(data, data?.count)}
-          >
-            공유하기
+            <div
+              className="text-sm text-slate-400 self-end mt-1 cursor-pointer"
+              onClick={() => clickShareButton(data, data?.count)}
+            >
+              공유하기
+            </div>
           </div>
         </div>
       ))}
