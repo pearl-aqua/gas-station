@@ -176,3 +176,16 @@ export const updatePass = async ({ userId, email }) => {
 
   await setDoc(doc(store, 'pass', docId.toString()), data);
 };
+
+export const updateMemo = async ({ userId, email, text }) => {
+  const data = {
+    email: email || '',
+    userId: userId || '',
+    date: new Date(),
+    text,
+  };
+
+  const docId = Date.now();
+
+  await setDoc(doc(store, 'g_memo', docId.toString()), data);
+};

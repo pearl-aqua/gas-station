@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 
-import { getQuestionList } from '../firebase/title';
+import { getQuestionList, getResultList } from '../firebase/title';
 
 export const userInfoState = atom({
   key: 'userInfoState',
@@ -11,6 +11,14 @@ export const questionListState = selector({
   key: 'questionListState',
   get: async ({ get }) => {
     const list = await getQuestionList();
+    return list;
+  },
+});
+
+export const resultListState = selector({
+  key: 'resultListStat',
+  get: async ({ get }) => {
+    const list = await getResultList();
     return list;
   },
 });
