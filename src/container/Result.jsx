@@ -1,12 +1,30 @@
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
 
 import { resultListState } from '../recoil';
+import { getUserInfo, updatePass } from '../firebase/title';
 
 const pageUrl = 'gas-station-theta.vercel.app';
+const id = window.localStorage.getItem('gas_id');
 
 const Result = () => {
   const questionList = useRecoilValue(resultListState);
+
+  useEffect(() => {
+    const checkLogin = async () => {
+      const userInfoResult = await getUserInfo({ id });
+
+      if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
+        await updatePass({ userId: id, email: userInfoResult.email });
+      }
+    };
+
+    if (id) {
+      checkLogin();
+    }
+  }, [id]);
+
   const getOptionWidth = (count, dataCount) => {
     if (!count || !dataCount) {
       return '0';
@@ -38,6 +56,7 @@ const Result = () => {
       )}&url=${encodeURI(pageUrl)}`
     );
   };
+
   return (
     <>
       <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
