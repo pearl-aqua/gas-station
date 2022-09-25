@@ -60,6 +60,45 @@ export const getQuestionList = async () => {
   return sortList;
 };
 
+export const getResultList = async () => {
+  const questionSnapshot = await getDocs(questionRef);
+  const optionSnapshot = await getDocs(optionRef);
+
+  let optionList = [];
+
+  optionSnapshot.forEach((doc) => {
+    optionList.push({
+      id: doc.id,
+      text: doc.data().text,
+      count: doc.data().count,
+    });
+  });
+
+  let questionsList = [];
+
+  questionSnapshot.forEach((doc) => {
+    const currentOptionsId = doc.data().optionsId;
+
+    const currentOptions = optionList.filter(({ id }) => {
+      return currentOptionsId.includes(id);
+    });
+
+    const sortOptions = currentOptions.sort((a, b) => b.count - a.count);
+
+    questionsList.push({
+      id: doc.id,
+      options: sortOptions,
+      ...doc.data(),
+    });
+  });
+
+  const sortList = listOrder.map((listId) =>
+    questionsList.find(({ id }) => id === listId)
+  );
+
+  return sortList;
+};
+
 export const getQuestionResult = async (questionId) => {
   const questionOneRef = doc(store, 'g_question', questionId);
 
@@ -129,8 +168,11 @@ export const getUserInfo = async ({ id, email }) => {
 export const updatePass = async ({ userId, email }) => {
   const data = {
     email,
+    userId,
     date: new Date(),
   };
 
-  await setDoc(doc(store, 'pass', userId), data);
+  const docId = Date.now();
+
+  await setDoc(doc(store, 'pass', docId), data);
 };
