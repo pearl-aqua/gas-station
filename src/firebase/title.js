@@ -174,5 +174,5 @@ export const updatePass = async ({ userId, email }) => {
 
   const docId = Date.now();
 
-  await setDoc(doc(store, 'pass', docId), data);
+  await setDoc(doc(store, 'pass', docId.toString()), data);
 };
