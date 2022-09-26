@@ -11,19 +11,19 @@ const id = window.localStorage.getItem('gas_id');
 const Result = () => {
   const questionList = useRecoilValue(resultListState);
 
-  useEffect(() => {
-    const checkLogin = async () => {
-      const userInfoResult = await getUserInfo({ id });
+  // useEffect(() => {
+  //   const checkLogin = async () => {
+  //     const userInfoResult = await getUserInfo({ id });
 
-      if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
-        await updatePass({ userId: id, email: userInfoResult.email });
-      }
-    };
+  //     if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
+  //       await updatePass({ userId: id, email: userInfoResult.email });
+  //     }
+  //   };
 
-    if (id) {
-      checkLogin();
-    }
-  }, [id]);
+  //   if (id) {
+  //     checkLogin();
+  //   }
+  // }, [id]);
 
   const getOptionWidth = (count, dataCount) => {
     if (!count || !dataCount) {
