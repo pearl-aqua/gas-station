@@ -3,17 +3,19 @@ import { Routes, Route } from 'react-router-dom';
 // import Intro from '../container/Intro';
 // import Login from '../container/Login';
 // import Logout from '../container/Logout';
+// import Memo from '../container/Memo';
 import Result from '../container/Result';
-import Memo from '../container/Memo';
+import Landing from '../container/Landing';
 
 const Root = () => {
   return (
     <Routes>
-      <Route path="/" element={<Result />} />
+      <Route path="/" element={<Landing />} />
       {/* <Route path="login" element={<Login />} />
       <Route path="logout" element={<Logout />} />
-      <Route path="result" element={<Result />} /> */}
-      <Route path="memo" element={<Memo />} />
+      <Route path="result" element={<Result />} />
+      <Route path="memo" element={<Memo />} /> */}
+      <Route path="2022-happy-kibum-day" element={<Result />} />
     </Routes>
   );
 };

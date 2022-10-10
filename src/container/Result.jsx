@@ -11,19 +11,19 @@ const id = window.localStorage.getItem('gas_id');
 const Result = () => {
   const questionList = useRecoilValue(resultListState);
 
-  // useEffect(() => {
-  //   const checkLogin = async () => {
-  //     const userInfoResult = await getUserInfo({ id });
+  useEffect(() => {
+    const checkLogin = async () => {
+      const userInfoResult = await getUserInfo({ id });
 
-  //     if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
-  //       await updatePass({ userId: id, email: userInfoResult.email });
-  //     }
-  //   };
+      if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
+        await updatePass({ userId: id, email: userInfoResult.email });
+      }
+    };
 
-  //   if (id) {
-  //     checkLogin();
-  //   }
-  // }, [id]);
+    if (id) {
+      checkLogin();
+    }
+  }, [id]);
 
   const getOptionWidth = (count, dataCount) => {
     if (!count || !dataCount) {
@@ -59,17 +59,22 @@ const Result = () => {
 
   return (
     <>
-      <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
-        <span>- 기범이 생일을 맞아 재미삼아 만든 페이지입니다.</span>
+      <div className="flex flex-col w-[350px] md:w-96 px-7 py-5 mb-2 bg-white rounded-2xl border border-slate-200 text-left">
+        <span className="text-lg text-violet-500 font-semibold">
+          2022 Happy Kibum day
+        </span>
+      </div>
+      <div className="flex flex-col w-[350px] md:w-96 px-8 pt-7 pb-5 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
+        <span>- 2022년 기범이 생일을 맞아 만든 페이지입니다.</span>
         <span className="mt-1">
-          - 더이상 투표자가 없어 미리 고지한 27일보다 이른 26일 1시에 투표
+          - 더이상 투표자가 없어 미리 고지한 9월 27일보다 이른 9월 26일에 투표
           종료하였습니다.
         </span>
         <span className="mt-1">
           - 최종 투표 결과는 아래에서 확인 가능합니다.
         </span>
-        <span className="mt-1">
-          - 투표해주신 분들, 공유해주신 분들 모두에게 감사드립니다.
+        <span className="mt-4 self-end">
+          <Link to="/">뒤로가기</Link>
         </span>
       </div>
       {questionList.map((data) => (
@@ -129,14 +134,14 @@ const Result = () => {
           궁금하기도 하고, 올해 시간상 하지 못했던 작업들도 있어서 2023 버전도
           만들 수 있으면 좋을거 같아요. 물론 내년 상황이 어떠할지 모르겠지만.
         </span>
-        <span className="mt-2.5">
+        {/* <span className="mt-2.5">
           - 혹시 '투표해 봤으면 하는 질문'이 있으시다면 남겨주시면 참고해보도록
           하겠습니다. (아마도 내년에...) 아래 링크에 남기실 수 있으며, 9월
           29일까지 열어놓도록 하겠습니다.
         </span>
         <span className="mt-1">
           <Link to="/memo">질문 링크</Link>
-        </span>
+        </span> */}
         <span className="mt-2.5">
           - 마지막으로 이 모든 계기를 만들어준 김기범씨에게 무한한 감사와 사랑을
           전하며. 언제나 응원하고 사랑하고 있어. 앞으로도 잘 부탁해.
