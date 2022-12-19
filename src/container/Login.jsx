@@ -24,13 +24,13 @@ const Login = () => {
   return loading ? (
     <div className="flex justify-center items-center w-full h-[600px]">
       <div className="animate-bounce text-2xl font-semibold text-violet-500">
-        Happy kibum Day!
+        Greatest Of All Time
       </div>
     </div>
   ) : (
     <div className="flex flex-col justify-center items-center w-[350px] md:w-96 px-8 py-10 mt-28 mb-28 bg-white rounded-2xl border border-slate-200 text-left z-50">
       <div className="mb-6 text-slate-600">
-        중복 투표를 방지하기 위해 구글 로그인을 사용하고 있습니다.
+        편지 저장 및 수정을 위해 구글 로그인을 사용하고 있습니다.
         <div className="flex flex-col mt-5 text-sm text-slate-400">
           <span className="mb-3">
             - 이메일 정보는 회원 관리를 위해서만 사용되며 그 외의 용도로

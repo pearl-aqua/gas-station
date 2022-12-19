@@ -189,3 +189,15 @@ export const updateMemo = async ({ userId, email, text }) => {
 
   await setDoc(doc(store, 'g_memo', docId.toString()), data);
 };
+
+export const updateGOATFirstSong = async ({ userId, text }) => {
+  const data = {
+    userId: userId || '',
+    date: new Date(),
+    text,
+  };
+
+  const docId = Date.now();
+
+  await setDoc(doc(store, 'g_goat_first_song', docId.toString()), data);
+};
