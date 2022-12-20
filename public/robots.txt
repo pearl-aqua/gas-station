@@ -3,7 +3,19 @@
 User-agent: Twitterbot
 Allow: /
 
-User-agent: *
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Yeti
+Disallow: /
+
+User-agent: Daum
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: DuckDuckBot
 Disallow: /
 
 
