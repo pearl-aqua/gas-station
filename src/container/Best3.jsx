@@ -39,8 +39,6 @@ const FirstSong = () => {
     }
   }, [id]);
 
-  console.log(userInfo, 'userInfo');
-
   useEffect(() => {
     const setSeat = async () => {
       const seatList = await getSeat();
@@ -157,14 +155,13 @@ const FirstSong = () => {
   const paperBG =
     'https://images.unsplash.com/photo-1637325258040-d2f09636ecf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
 
-  const bg =
-    'https://images.unsplash.com/photo-1575401744434-8e752e238768?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
-
+  const paperBG1 =
+    'https://images.unsplash.com/photo-1615800098779-1be32e60cca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80';
   return (
     <>
       <div
         style={{
-          backgroundImage: `url(${step !== 3 ? bg1 : paperBG})`,
+          backgroundImage: `url(${step !== 3 ? bg1 : paperBG1})`,
         }}
         className={`flex justify-center items-center text-center w-full md:w-96 rounded-2xl text-white z-50 bg-cover bg-center ${
           step === 3 ? 'h-[700px]' : 'h-[600px]'
@@ -180,7 +177,7 @@ const FirstSong = () => {
             </div>
 
             <div className="flex flex-col">
-              {!userInfo?.letterId && (
+              {(!userInfo || !userInfo?.letterId) && (
                 <button
                   className="flex items-center justify-center w-full h-14 text-lg font-semibold rounded-xl border text-white hover:text-emerald-800 hover:bg-white hover:bg-opacity-60"
                   onClick={() => setStep(1)}
@@ -306,9 +303,12 @@ const FirstSong = () => {
               value={text}
               onChange={(e) => handleOnChange(e, id)}
             />
+            <div className="mb-2 text-sm self-end text-slate-400">
+              {text.length} / 500
+            </div>
 
             <div className="flex flex-col justify-center items-center w-full mt-5">
-              <div className="mb-2" onClick={() => setStep(4)}>
+              <div className="mb-2 cursor-pointer" onClick={() => setStep(4)}>
                 미리 보기
               </div>
               <button
@@ -318,7 +318,7 @@ const FirstSong = () => {
               >
                 제출하기
               </button>
-              <div className="mt-2" onClick={onClickBackTwo}>
+              <div className="mt-2 cursor-pointer" onClick={onClickBackTwo}>
                 뒤로 가기
               </div>
             </div>
@@ -326,23 +326,23 @@ const FirstSong = () => {
         )}
         {step === 4 && (
           <div
-            className="flex flex-col p-4 w-full md:w-[320px] min-h-[248px] rounded-xl  text-slate-400 z-50"
+            className="flex flex-col p-4 w-full md:w-[320px] min-h-[360px] rounded-xl  text-slate-400 z-50"
             style={{
               backgroundImage: `url(${paperBG})`,
             }}
           >
             <div
-              className="text-lg font-medium text-stone-600 mb-2 self-end"
+              className="text-lg font-medium text-stone-600 mb-2 self-end cursor-pointer"
               onClick={() => setStep(3)}
             >
               X
             </div>
 
             <div className="flex justify-between  mb-6 pb-1 border-b-[1px] border-slate-300">
-              <div className="text-left text-sm font-medium text-stone-600">
+              <div className="text-left font-medium text-emerald-700">
                 좌석번호: {selectedNum}
               </div>
-              <div className="text-left text-sm font-serif font-medium text-stone-600">
+              <div className="text-left font-medium text-emerald-700">
                 by {name}
               </div>
             </div>

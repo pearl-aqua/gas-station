@@ -67,6 +67,8 @@ const FirstSong = () => {
   const paperBG =
     'https://images.unsplash.com/photo-1637325258040-d2f09636ecf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80';
 
+  const paperBG1 =
+    'https://images.unsplash.com/photo-1615800098779-1be32e60cca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80';
   return (
     <div
       style={{
@@ -85,7 +87,7 @@ const FirstSong = () => {
               예정입니다.
             </span>
             <span className="text-sm mb-1">
-              - 본인이 작성한 편지 확인 및 수정을 위해 로그인이 필요합니다.
+              - 본인이 작성한 편지 확인을 위해 로그인이 필요합니다.
             </span>
           </div>
 
@@ -101,21 +103,25 @@ const FirstSong = () => {
                   !!el.id ? 'bg-emerald-700 cursor-pointer ' : 'bg-slate-200'
                 }`}
                 onClick={() => setLetterId(el.letterId)}
-              ></div>
+              >
+                {el.id ? '💎' : ''}
+              </div>
             ))}
           </div>
           <div className="mt-4 cursor-pointer">
             <Link to="/">뒤로가기</Link>
           </div>
-          <div className="mt-1 cursor-pointer">
-            <Link to="/">로그인하기</Link>
-          </div>
+          {!userInfo && (
+            <div className="mt-1 cursor-pointer">
+              <Link to="/">로그인하기</Link>
+            </div>
+          )}
         </div>
       ) : (
         <div
-          className="flex flex-col w-full md:w-[320px] min-h-[300px] px-4 pt-2 pb-4 bg-white rounded-xl border border-slate-200 text-slate-400 z-50"
+          className="flex flex-col w-full md:w-[320px] min-h-[360px] px-4 pt-2 pb-4 bg-white rounded-xl border border-slate-200 text-slate-400 z-50"
           style={{
-            backgroundImage: `url(${paperBG})`,
+            backgroundImage: `url(${paperBG1})`,
           }}
         >
           <div
@@ -126,35 +132,49 @@ const FirstSong = () => {
           </div>
 
           <div className="flex justify-between mb-6 pb-2 border-b-[1px] border-slate-300">
-            <div className="text-left text-sm font-semibold text-stone-600">
-              좌석번호: {letterInfo?.seat}{' '}
+            <div className="text-left ">
+              <span className="">좌석번호:</span>{' '}
+              <span className="font-medium text-emerald-700">
+                {letterInfo?.seat}
+              </span>
             </div>
-            <div className="text-left text-sm font-serif font-semibold text-stone-600">
-              by {letterInfo?.name}
+            <div className="text-left font-medium ">
+              <span className="">by</span>{' '}
+              <span className="text-emerald-700">{letterInfo?.name}</span>
             </div>
           </div>
 
           {letterId !== userInfo.letterId ? (
-            <div>편지 내용은 12월 30일에 공개됩니다</div>
+            <div className="text-left font-semibold text-emerald-600">
+              편지 내용은 12월 31일에 공개됩니다
+            </div>
           ) : (
             <div className="flex flex-col justify-between h-full">
               <div>
-                <div>편지 내용은 12월 30일에 공개됩니다</div>
-                <div
+                {/* <div className="font-semibold text-emerald-600">
+                  편지 내용은 12월 31일에 공개됩니다
+                </div> */}
+                {/* <div
                   className="mt-4 cursor-pointer"
                   onClick={() => clickShareButton(letterInfo?.seat)}
                 >
                   📮 편지 쓰기 공유하기 📮
+                </div> */}
+                <div className="text-left text-stone-600 mb-4 whitespace-pre-wrap max-h-[580px] overflow-auto">
+                  {letterInfo?.text}
                 </div>
               </div>
 
-              {/* <div className="text-left text-stone-600 mb-4 whitespace-pre-wrap max-h-[580px] overflow-auto">
-                {letterInfo?.text}
-              </div> */}
-
-              <div className="text-right mt-4 cursor-pointer">
-                <Link to="/">수정하기</Link>
+              <div
+                className="text-right mt-4 cursor-pointer"
+                onClick={() => clickShareButton(letterInfo?.seat)}
+              >
+                📮 편지 쓰기 공유하기 📮
               </div>
+
+              {/* <div className="text-right mt-4 cursor-pointer">
+                <Link to="/">수정하기(기능 추가 예정)</Link>
+              </div> */}
             </div>
           )}
         </div>
