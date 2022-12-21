@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { getUserInfo } from '../firebase/title';
-import { postLetter } from '../firebase/letter';
+import { postLetter, removeTempSeat, setTempSeat } from '../firebase/letter';
 
 import { getSeat } from '../util';
 
@@ -129,12 +129,26 @@ const FirstSong = () => {
     setStep(2);
   };
 
-  const onClickStepTwo = () => {
+  const onClickStepTwo = async () => {
     if (!selectedNum) {
       alert('좌석을 선택해주세요');
       return;
     }
-    setStep(3);
+    const res = await setTempSeat(selectedNum);
+
+    if (res === 'success') {
+      setStep(3);
+      return;
+    }
+    if (res === 'already') {
+      alert('이미 선택된 좌석 입니다');
+      return;
+    }
+  };
+
+  const onClickBackTwo = async () => {
+    await removeTempSeat(selectedNum);
+    setStep(2);
   };
 
   const bg1 =
@@ -304,7 +318,7 @@ const FirstSong = () => {
               >
                 제출하기
               </button>
-              <div className="mt-2" onClick={() => setStep(2)}>
+              <div className="mt-2" onClick={onClickBackTwo}>
                 뒤로 가기
               </div>
             </div>
