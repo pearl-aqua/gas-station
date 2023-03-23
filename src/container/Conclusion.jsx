@@ -43,20 +43,9 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
     return `${widthNum}p`;
   };
 
-  const sendText =
-    data.id !== '10001'
-      ? `🎂 김기범 생일 기념 질문 🎂
-  Q.${newData?.text || data?.text}
-  - 당신의 선택 : ${selectOption[0]?.text}
-  - ${parseFloat(
-    ((selectOption[0]?.count / newData?.count || 0) * 100).toFixed(2)
-  )}%의 릴프릭이 같은 선택을 하였습니다.
-  
-  투표하기 및 결과보러가기 ->
-`
-      : `🎂 김기범 생일 기념 질문 🎂
+  const sendText = `💎 2023 SHINee's Back 💎
 Q.${newData?.text || data?.text}
-- 당신의 선택 : ${selectOption?.map(({ text }) => text)}
+- ${selectOption?.map(({ text }) => ` ${text}`)}
 
 투표하기 및 결과보러가기 ->
 `;
@@ -72,7 +61,7 @@ Q.${newData?.text || data?.text}
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col w-312p mb-2">
-        <div className="text-left text-lg text-stone-800  font-semibold mb-2">
+        <div className="text-left text-lg text-stone-800 font-semibold mb-2">
           Q. {newData?.text || data?.text}
         </div>
         <div className="self-end text-sm text-stone-600">{`총 ${
@@ -84,7 +73,7 @@ Q.${newData?.text || data?.text}
         ? newData?.options?.map(({ id, text, count }) => (
             <div
               key={id}
-              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-800 border border-violet-100 rounded-lg box-content"
+              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-800 border border-teal-100 rounded-lg box-content"
             >
               <div className="flex justify-between w-full z-20">
                 <span className="">{text}</span>
@@ -95,14 +84,14 @@ Q.${newData?.text || data?.text}
               <div
                 className={`absolute top-0 left-0 w-${getOptionWidth(
                   count
-                )} h-[38px] bg-violet-200 rounded-[7px] z-100 border border-violet-200`}
+                )} h-[38px] bg-teal-100 rounded-[7px] z-100 border border-teal-100`}
               />
             </div>
           ))
         : data?.options?.map(({ id, text, count }) => (
             <div
               key={id}
-              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-600 border border-violet-100 rounded-lg box-content"
+              className="relative flex flex-col item-start justify-center w-278p h-[38px] px-4 mb-2 text-slate-600 border border-teal-100 rounded-lg box-content"
             >
               <div className="flex justify-between w-full z-20">
                 <span>{text}</span>
@@ -115,7 +104,7 @@ Q.${newData?.text || data?.text}
       {data?.id !== '10007' && (
         <div className="flex flex-col items-center justify-center">
           <button
-            className="flex items-center justify-center w-160p px-5 py-3 mt-5 rounded-2xl bg-violet-400 text-white hover:bg-violet-500"
+            className="flex items-center justify-center w-160p px-5 py-3 mt-5  text-teal-400 hover:text-teal-600"
             onClick={clickShareButton}
           >
             결과 공유하기

@@ -1,12 +1,8 @@
 import { useState } from 'react';
-import { useRecoilValue, useSetRecoilState, useRecoilState } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  userInfoState,
-  selectedOptionsIdState,
-  // loginModalOpenState,
-} from '../recoil';
+import { userInfoState, selectedOptionsIdState } from '../recoil';
 import { updateCount } from '../firebase/title';
 
 const Question = ({ data, setAnswered }) => {
@@ -15,7 +11,7 @@ const Question = ({ data, setAnswered }) => {
   const [selectedOptionsId, setSelectedOptionsId] = useRecoilState(
     selectedOptionsIdState
   );
-  // const setLoginModalOpen = useSetRecoilState(loginModalOpenState);
+
   const navigate = useNavigate();
 
   const moveLoginPage = () => {
@@ -29,41 +25,31 @@ const Question = ({ data, setAnswered }) => {
     }
   };
 
-  // const openLoginModal = () => {
-  //   setLoginModalOpen(true);
-  // };
-
   const handleSelectOption = (id) => {
     if (!userInfo?.id) {
       moveLoginPage();
-      // openLoginModal();
-    }
-
-    if (data.id === '10001') {
-      if (selectedOption.includes(id)) {
-        const filterOption = selectedOption.filter(
-          (optionId) => optionId !== id
-        );
-        setSelectOption(filterOption);
-      } else if (selectedOption.length < 3) {
-        setSelectOption([...selectedOption, id]);
-      } else {
-        alert('3개 이상 선택하실 수 없습니다');
-      }
-      return;
     }
 
     if (selectedOption.includes(id)) {
       const filterOption = selectedOption.filter((optionId) => optionId !== id);
       setSelectOption(filterOption);
+    } else if (selectedOption.length < 5) {
+      setSelectOption([...selectedOption, id]);
     } else {
-      setSelectOption([id]);
+      alert('5개 이상 선택하실 수 없습니다');
     }
+
+    // if (selectedOption.includes(id)) {
+    //   const filterOption = selectedOption.filter((optionId) => optionId !== id);
+    //   setSelectOption(filterOption);
+    // } else {
+    //   setSelectOption([id]);
+    // }
   };
 
   const getButtonStyle = (id) => {
     if (selectedOption.includes(id)) {
-      return 'bg-violet-200 font-medium shadow-md';
+      return 'bg-teal-100 font-medium shadow';
     }
     return '';
   };
@@ -94,7 +80,7 @@ const Question = ({ data, setAnswered }) => {
       {data?.options?.map(({ id, text }) => (
         <button
           key={id}
-          className={`flex items-center w-312p h-10 px-4 py-3 mb-2 text-violet-900 hover:shadow-md border border-violet-200 rounded-lg ${getButtonStyle(
+          className={`flex items-center w-312p h-10 px-4 py-3 mb-2 text-teal-900 hover:shadow-sm border border-teal-100 rounded-lg ${getButtonStyle(
             id
           )}`}
           onClick={() => handleSelectOption(id)}
@@ -103,7 +89,7 @@ const Question = ({ data, setAnswered }) => {
         </button>
       ))}
       <button
-        className="flex items-center justify-center w-160p px-5 py-3 mt-5 rounded-2xl bg-violet-400 text-white hover:bg-violet-500 disabled:bg-neutral-400"
+        className="flex items-center justify-center w-160p px-5 py-3 mt-5 rounded-2xl bg-teal-300 text-white hover:bg-teal-500 disabled:bg-neutral-400"
         disabled={selectedOption.length === 0}
         onClick={handleClickButton}
       >
