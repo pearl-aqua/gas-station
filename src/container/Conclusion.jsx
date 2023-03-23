@@ -43,7 +43,7 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
     return `${widthNum}p`;
   };
 
-  const sendText = `💎 2023 SHINee's Back 💎
+  const sendText = `💎 2023 SHINee IS BACK 💎
 Q.${newData?.text || data?.text}
 - ${selectOption?.map(({ text }) => ` ${text}`)}
 

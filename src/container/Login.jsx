@@ -24,7 +24,7 @@ const Login = () => {
   return loading ? (
     <div className="flex justify-center items-center w-full h-[600px]">
       <div className="animate-bounce text-2xl font-semibold text-teal-300">
-        2023 SHINee's Back
+        2023 SHINee IS BACK
       </div>
     </div>
   ) : (
