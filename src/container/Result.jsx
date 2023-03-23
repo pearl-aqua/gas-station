@@ -1,29 +1,12 @@
-import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
 
-import { resultListState } from '../recoil';
-import { getUserInfo, updatePass } from '../firebase/title';
+import { happy2022ResultListState } from '../recoil/happyDay';
 
 const pageUrl = 'gas-station-theta.vercel.app';
-const id = window.localStorage.getItem('gas_id');
 
 const Result = () => {
-  const questionList = useRecoilValue(resultListState);
-
-  useEffect(() => {
-    const checkLogin = async () => {
-      const userInfoResult = await getUserInfo({ id });
-
-      if (id !== 'kXc4iHYDHmTULJxgXmCiXzNO3Lh2') {
-        await updatePass({ userId: id, email: userInfoResult.email });
-      }
-    };
-
-    if (id) {
-      checkLogin();
-    }
-  }, [id]);
+  const questionList = useRecoilValue(happy2022ResultListState);
 
   const getOptionWidth = (count, dataCount) => {
     if (!count || !dataCount) {
@@ -120,7 +103,7 @@ const Result = () => {
           </div>
         </div>
       ))}
-      <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400 z-50">
+      {/* <div className="flex flex-col w-[350px] md:w-96 px-8 py-7 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400 z-50">
         <span className="text-base">P.S</span>
         <span className="mt-2.5">
           - 다시 한번 투표해주신 모든 분들께 감사드립니다. '다른 릴프릭들은 어떤
@@ -134,19 +117,19 @@ const Result = () => {
           궁금하기도 하고, 올해 시간상 하지 못했던 작업들도 있어서 2023 버전도
           만들 수 있으면 좋을거 같아요. 물론 내년 상황이 어떠할지 모르겠지만.
         </span>
-        {/* <span className="mt-2.5">
+        <span className="mt-2.5">
           - 혹시 '투표해 봤으면 하는 질문'이 있으시다면 남겨주시면 참고해보도록
           하겠습니다. (아마도 내년에...) 아래 링크에 남기실 수 있으며, 9월
           29일까지 열어놓도록 하겠습니다.
         </span>
         <span className="mt-1">
           <Link to="/memo">질문 링크</Link>
-        </span> */}
+        </span>
         <span className="mt-2.5">
           - 마지막으로 이 모든 계기를 만들어준 김기범씨에게 무한한 감사와 사랑을
           전하며. 언제나 응원하고 사랑하고 있어. 앞으로도 잘 부탁해.
         </span>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -13,15 +13,7 @@ import { store } from './index';
 const optionRef = collection(store, 'g_option');
 const questionRef = collection(store, 'g_question');
 
-const listOrder = [
-  '10002',
-  '10003',
-  '10004',
-  '10001',
-  '10005',
-  '10006',
-  '10007',
-];
+const listOrder = ['30007'];
 
 export const getQuestionList = async () => {
   const questionSnapshot = await getDocs(questionRef);
@@ -43,7 +35,7 @@ export const getQuestionList = async () => {
     const currentOptionsId = doc.data().optionsId;
 
     const currentOptions = optionList.filter(({ id }) => {
-      return currentOptionsId.includes(id);
+      return currentOptionsId?.includes(id);
     });
 
     questionsList.push({
@@ -80,7 +72,7 @@ export const getResultList = async () => {
     const currentOptionsId = doc.data().optionsId;
 
     const currentOptions = optionList.filter(({ id }) => {
-      return currentOptionsId.includes(id);
+      return currentOptionsId?.includes(id);
     });
 
     const sortOptions = currentOptions.sort((a, b) => b.count - a.count);
@@ -188,16 +180,4 @@ export const updateMemo = async ({ userId, email, text }) => {
   const docId = Date.now();
 
   await setDoc(doc(store, 'g_memo', docId.toString()), data);
-};
-
-export const updateGOATFirstSong = async ({ userId, text }) => {
-  const data = {
-    userId: userId || '',
-    date: new Date(),
-    text,
-  };
-
-  const docId = Date.now();
-
-  await setDoc(doc(store, 'g_goat_first_song', docId.toString()), data);
 };
