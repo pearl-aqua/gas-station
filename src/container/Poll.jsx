@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 
 import { userInfoState } from '../recoil';
@@ -13,11 +13,17 @@ const Poll = ({ data }) => {
 
   const { questionId = [], optionsId = [] } = userInfo || {};
 
-  const isAnsweredUser = questionId.includes(data.id);
+  useEffect(() => {
+    if (data.id && questionId.length > 0) {
+      setAnswered(questionId.includes(data.id));
+    }
+  }, [data?.id, questionId]);
+
+  const isAnsweredUser = questionId?.includes(data?.id);
 
   return (
     <div className="flex flex-col justify-center items-center w-[350px] md:w-96 py-10 mb-4 bg-white rounded-2xl border border-slate-200 z-50">
-      {answered || isAnsweredUser ? (
+      {answered ? (
         <Conclusion
           data={data}
           answered={answered}

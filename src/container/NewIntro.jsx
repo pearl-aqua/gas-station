@@ -43,17 +43,19 @@ const Intro = () => {
             key={el}
             className={`mr-2 border p-2 ${
               index === albumNum ? 'bg-teal-100' : 'bg-white'
-            } ${index !== 0 ? 'bg-gray-100 text-gray-400' : 'text-teal-600'}`}
-            disabled={index !== 0}
+            } ${index === 2 ? 'bg-gray-100 text-gray-400' : 'text-teal-600'}`}
+            disabled={index === 2}
             onClick={() => setAlbumNum(index)}
           >
             {el}
           </button>
         ))}
       </div>
-      {questionList.map((data) => (
+      <Poll data={questionList[albumNum]} />
+
+      {/* {questionList.map((data) => (
         <Poll key={data.id} data={data} />
-      ))}
+      ))} */}
     </>
   );
 };
