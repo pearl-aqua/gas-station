@@ -37,11 +37,11 @@ const Intro = () => {
           </span>
         )}
       </div>
-      <div className="flex w-[350px] md:w-96 px-2 mb-2 bg-white text-left text-sm">
+      <div className="flex w-[350px] md:w-96 px-2 mb-2 bg-white text-left text-sm flex-wrap">
         {albumList.map((el, index) => (
           <button
             key={el}
-            className={`mr-2 border p-2 ${
+            className={`mr-2 mb-2 border p-2 ${
               index === albumNum ? 'bg-teal-100' : 'bg-white'
             } ${index === 3 ? 'bg-gray-100 text-gray-400' : 'text-teal-600'}`}
             disabled={index === 3}
