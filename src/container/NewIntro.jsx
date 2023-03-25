@@ -23,7 +23,7 @@ const Intro = () => {
     }
   }, [id]);
 
-  const albumList = ['7집 리패키지', '6집', 'coming ...'];
+  const albumList = ['7집 리패키지', '6집', '5집 리패키지', 'coming ...'];
 
   return (
     <>
@@ -43,8 +43,8 @@ const Intro = () => {
             key={el}
             className={`mr-2 border p-2 ${
               index === albumNum ? 'bg-teal-100' : 'bg-white'
-            } ${index === 2 ? 'bg-gray-100 text-gray-400' : 'text-teal-600'}`}
-            disabled={index === 2}
+            } ${index === 3 ? 'bg-gray-100 text-gray-400' : 'text-teal-600'}`}
+            disabled={index === 3}
             onClick={() => setAlbumNum(index)}
           >
             {el}
