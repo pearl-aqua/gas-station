@@ -33,10 +33,10 @@ const Question = ({ data, setAnswered }) => {
     if (selectedOption.includes(id)) {
       const filterOption = selectedOption.filter((optionId) => optionId !== id);
       setSelectOption(filterOption);
-    } else if (selectedOption.length < 12) {
+    } else if (selectedOption.length < 10) {
       setSelectOption([...selectedOption, id]);
     } else {
-      alert('12개 이상 선택하실 수 없습니다');
+      alert('10개 이상 선택하실 수 없습니다');
     }
 
     // if (selectedOption.includes(id)) {
