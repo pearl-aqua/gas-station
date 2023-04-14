@@ -41,7 +41,7 @@ const Taemin = () => {
           </span>
         )}
       </div>
-      <div className="flex w-[350px] md:w-96 px-2 bg-white text-left text-sm flex-wrap">
+      <div className="flex w-[350px] md:w-96 bg-white text-left text-sm flex-wrap">
         <Poll data={filteredList} />
       </div>
     </>
