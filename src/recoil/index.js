@@ -1,6 +1,7 @@
 import { atom, selector } from 'recoil';
 
-import { getQuestionList, getResultList } from '../firebase/title';
+import { getResultList } from '../firebase/title';
+import { getQuestionList } from '../firebase/question';
 
 export const userInfoState = atom({
   key: 'userInfoState',

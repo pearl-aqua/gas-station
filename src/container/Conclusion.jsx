@@ -43,9 +43,9 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
     return `${widthNum}p`;
   };
 
-  const sendText = `💎 2023 SHINee IS BACK 💎
-Q.${newData?.text || data?.text}
-- ${selectOption?.map(({ text }) => ` ${text}`)}
+  const sendText = `💎 2023 TAEMIN IS BACK 💎
+Q. ${newData?.text || data?.text}
+- ${selectOption?.map(({ text }) => ` ${text}\n`).join('-')}
 
 투표하기 및 결과보러가기 ->
 `;
@@ -104,7 +104,7 @@ Q.${newData?.text || data?.text}
       {data?.id !== '10007' && (
         <div className="flex flex-col items-center justify-center">
           <button
-            className="flex items-center justify-center w-160p px-5 py-3 mt-5  text-teal-400 hover:text-teal-600"
+            className="flex items-center justify-center w-160p px-5 mt-5 text-teal-400 hover:text-teal-600"
             onClick={clickShareButton}
           >
             결과 공유하기
