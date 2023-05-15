@@ -7,6 +7,7 @@ import Result from '../container/Result';
 import Shinee2023 from '../container/NewIntro';
 
 import Landing from '../container/Landing';
+import Taemin2023 from '../container/Taemin2023';
 
 const Root = () => {
   return (
@@ -17,6 +18,8 @@ const Root = () => {
       <Route path="memo" element={<Memo />} /> */}
       <Route path="2022-happy-kibum-day" element={<Result />} />
       {/* <Route path="2023-shinee-day" element={<Shinee2023 />} /> */}
+      <Route path="2023-taemin-back" element={<Taemin2023 />} />
+
     </Routes>
   );
 };

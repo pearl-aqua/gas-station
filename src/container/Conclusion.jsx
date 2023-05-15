@@ -3,8 +3,11 @@ import { useRecoilValue } from 'recoil';
 
 import { getQuestionResult } from '../firebase/title';
 import { selectedOptionsIdState } from '../recoil';
+import {taeminText, shineeText} from '../contants'
 
 const pageUrl = 'gas-station-theta.vercel.app';
+
+
 
 const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
   const [newData, setNewData] = useState(null);
@@ -43,14 +46,8 @@ const Conclusion = ({ data, answered, isAnsweredUser, optionsId }) => {
     return `${widthNum}p`;
   };
 
-  const sendText = `💎 2023 TAEMIN IS BACK 💎
-Q. ${newData?.text || data?.text}
-- ${selectOption?.map(({ text }) => ` ${text}\n`).join('-')}
-
-투표하기 및 결과보러가기 ->
-`;
-
-  const clickShareButton = () => {
+  const sendText = data.id ==='40001' ? taeminText(data, newData, selectOption)  : shineeText(data, newData, selectOption)
+const clickShareButton = () => {
     window.open(
       `https://twitter.com/intent/tweet?text=${encodeURI(
         sendText
@@ -101,7 +98,7 @@ Q. ${newData?.text || data?.text}
               </div>
             </div>
           ))}
-      {data?.id !== '10007' && (
+      {!(data?.id === '10007'||data?.id === '50002') && (
         <div className="flex flex-col items-center justify-center">
           <button
             className="flex items-center justify-center w-160p px-5 mt-5 text-teal-400 hover:text-teal-600"

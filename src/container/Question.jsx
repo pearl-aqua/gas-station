@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { userInfoState, selectedOptionsIdState } from '../recoil';
 import { updateCount } from '../firebase/title';
 
-const Question = ({ data, setAnswered }) => {
+const Question = ({ data, setAnswered, answerNum }) => {
   const [selectedOption, setSelectOption] = useState([]);
   const userInfo = useRecoilValue(userInfoState);
   const [selectedOptionsId, setSelectedOptionsId] = useRecoilState(
@@ -33,10 +33,10 @@ const Question = ({ data, setAnswered }) => {
     if (selectedOption.includes(id)) {
       const filterOption = selectedOption.filter((optionId) => optionId !== id);
       setSelectOption(filterOption);
-    } else if (selectedOption.length < 10) {
+    } else if (selectedOption.length < answerNum) {
       setSelectOption([...selectedOption, id]);
     } else {
-      alert('10개 이상 선택하실 수 없습니다');
+      alert(`${answerNum}개 이상 선택하실 수 없습니다`);
     }
 
     // if (selectedOption.includes(id)) {

@@ -4,7 +4,7 @@ import { store } from './index';
 const optionRef = collection(store, 'g_option');
 const questionRef = collection(store, 'g_question');
 
-const listOrder = ['40001'];
+const listOrder = ['40001', '50001', '50002'];
 
 export const getQuestionList = async () => {
   const questionSnapshot = await getDocs(questionRef);

@@ -31,7 +31,7 @@ const Poll = ({ data }) => {
           optionsId={optionsId}
         />
       ) : (
-        <Question setAnswered={setAnswered} data={data} />
+        <Question setAnswered={setAnswered} data={data} answerNum={1} />
       )}
     </div>
   );
