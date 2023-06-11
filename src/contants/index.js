@@ -33,6 +33,4 @@ Q.${newData?.text || data?.text}
   - ${parseFloat(
     ((selectOption[0]?.count / newData?.count || 0) * 100).toFixed(2)
   )}%의 샤월이 같은 선택을 하였습니다.
-
-투표하기 및 결과보러가기 ->
 `;
