@@ -1,16 +1,16 @@
-import { useRecoilValue } from 'recoil';
-import { Link } from 'react-router-dom';
+import { useRecoilValue } from "recoil";
+import { Link } from "react-router-dom";
 
-import { happy2022ResultListState } from '../recoil/happyDay';
+import { happy2022ResultListState } from "../recoil/happyDay";
 
-const pageUrl = 'gas-station-theta.vercel.app';
+const pageUrl = "gas-station-theta.vercel.app";
 
 const Result = () => {
   const questionList = useRecoilValue(happy2022ResultListState);
 
   const getOptionWidth = (count, dataCount) => {
     if (!count || !dataCount) {
-      return '0';
+      return "0";
     }
 
     const widthNum = Math.round((count / dataCount) * 312);
@@ -19,7 +19,7 @@ const Result = () => {
   };
 
   const clickShareButton = (data, questionCount) => {
-    let optionText = '';
+    let optionText = "";
     data?.options?.forEach(({ text, count }, index) => {
       if (index < 3) {
         optionText += `${index + 1}위 : ${text} (${parseFloat(
@@ -49,16 +49,13 @@ const Result = () => {
       </div>
       <div className="flex flex-col w-[350px] md:w-96 px-8 pt-7 pb-5 mb-2 bg-white rounded-2xl border border-slate-200 text-left text-sm text-slate-400">
         <span>- 2022년 기범이 생일을 맞아 만든 페이지입니다.</span>
-        <span className="mt-1">
-          - 더이상 투표자가 없어 미리 고지한 9월 27일보다 이른 9월 26일에 투표
-          종료하였습니다.
-        </span>
+        <span className="mt-1">- 투표기간 : 2022/09/20 ~ 2022/09/26</span>
         <span className="mt-1">
           - 최종 투표 결과는 아래에서 확인 가능합니다.
         </span>
-        <span className="mt-4 self-end">
+        {/* <span className="mt-4 self-end">
           <Link to="/">뒤로가기</Link>
-        </span>
+        </span> */}
       </div>
       {questionList.map((data) => (
         <div
@@ -94,12 +91,12 @@ const Result = () => {
                 />
               </div>
             ))}
-            <div
+            {/* <div
               className="text-sm text-slate-400 self-end mt-1 cursor-pointer"
               onClick={() => clickShareButton(data, data?.count)}
             >
               공유하기
-            </div>
+            </div> */}
           </div>
         </div>
       ))}
